@@ -1,37 +1,129 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 검색 데이터 구조 플레이그라운드
 
-## Getting Started
+다양한 검색 알고리즘을 인터랙티브 예제로 학습할 수 있는 Next.js 애플리케이션입니다.
 
-First, run the development server:
+## 🔍 구현된 검색 알고리즘
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### 완전 일치 검색 (Exact Match Search)
+
+#### 1. Hash Table Search
+
+- **경로**: `/search/hash-table`
+- **시간 복잡도**: O(1) 평균, O(n) 최악
+- **특징**:
+  - JavaScript Map을 사용한 해시 테이블 구현
+  - 키-값 쌍의 직접 접근
+  - 실시간 연산 기록 표시
+  - 한국어 샘플 데이터 포함
+
+#### 2. Binary Search
+
+- **경로**: `/search/binary-search`
+- **시간 복잡도**: O(log n)
+- **특징**:
+  - 정렬된 배열에서의 이진 탐색
+  - 단계별 검색 과정 시각화
+  - 검색 범위 하이라이팅
+  - 분할 정복 알고리즘 구현
+
+### 텍스트 검색 (Text Search)
+
+#### 3. Trie (Prefix Tree)
+
+- **경로**: `/search/trie`
+- **시간 복잡도**: O(m) 검색, O(m + n) 자동완성
+- **특징**:
+  - 접두사 기반 자동완성
+  - 트리 구조로 메모리 효율성
+  - 실시간 자동완성 결과
+  - 영문 단어 사전 포함
+
+#### 4. Substring Matching
+
+- **경로**: `/search/substring`
+- **구현된 알고리즘**:
+  - **Naive Search**: O(n×m) 시간 복잡도
+  - **KMP Algorithm**: O(n + m) 시간 복잡도
+- **특징**:
+  - 두 알고리즘 성능 비교
+  - LPS 배열 시각화 (KMP)
+  - 매치된 텍스트 하이라이팅
+  - 알고리즘 실행 과정 추적
+
+## 📁 프로젝트 구조
+
+```
+src/
+├── app/
+│   ├── layout.tsx          # 루트 레이아웃 (Geist 폰트 설정)
+│   ├── page.tsx            # 메인 네비게이션 페이지
+│   └── search/
+│       ├── hash-table/
+│       │   └── page.tsx    # 해시 테이블 검색
+│       ├── binary-search/
+│       │   └── page.tsx    # 이진 탐색
+│       ├── trie/
+│       │   └── page.tsx    # 트라이 (접두사 트리)
+│       └── substring/
+│           └── page.tsx    # 부분 문자열 매칭
+└── CLAUDE.md               # 개발 가이드라인
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎯 주요 기능
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 인터랙티브 학습
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- 실시간 알고리즘 실행 시각화
+- 단계별 실행 과정 추적
+- 시간/공간 복잡도 설명
+- 한국어/영어 혼합 설명
 
-## Learn More
+### 데이터 조작
 
-To learn more about Next.js, take a look at the following resources:
+- 동적 데이터 추가/삭제
+- 실시간 결과 업데이트
+- 검색 기록 및 통계
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 성능 분석
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- 알고리즘별 비교 횟수 측정
+- 실행 단계 수 카운팅
+- 메모리 사용량 정보
 
-## Deploy on Vercel
+## 🔧 개발 명령어
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# 개발 서버 시작 (Turbopack 사용)
+pnpm dev
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# search-datastructure-playground
+# 프로덕션 빌드 생성
+pnpm build
+
+# 프로덕션 서버 실행
+pnpm start
+
+# 코드 품질 검사 (ESLint)
+pnpm lint
+```
+
+## 📚 학습 목표
+
+이 프로젝트는 다음과 같은 컴퓨터 과학 개념을 학습하는데 도움을 줍니다:
+
+1. **데이터 구조**: 해시 테이블, 배열, 트리
+2. **알고리즘 설계**: 분할 정복, 동적 프로그래밍
+3. **시간 복잡도**: Big O 표기법 이해
+4. **실제 적용**: 검색 엔진, 자동완성, 텍스트 편집기
+
+## 🎨 UI/UX 특징
+
+- **반응형 디자인**: 모바일/데스크톱 최적화
+- **시각적 피드백**: 색상 코딩으로 상태 표시
+- **직관적 인터페이스**: 한국어 라벨과 설명
+- **실시간 업데이트**: 즉시 결과 반영
+
+## 📄 라이선스
+
+이 프로젝트는 학습 목적으로 제작되었습니다.
+
+---
